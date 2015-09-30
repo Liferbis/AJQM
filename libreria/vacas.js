@@ -8,7 +8,11 @@ $( document ).on( "pagecreate", "#intro", function() {
             return $.post("include/ArchivoWord.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
  	          });
         }else{
-            alert("ERRORR");
+            popupLoader("Se ha producido un error al cargar los datos, Intentelo de nuevo mas tarde!")
+            setTimeout(function() {
+                $.mobile.loading( 'hide');
+                window.location.replace("#error");
+            }, 2500);
         }
     }
 
@@ -73,9 +77,13 @@ $( document ).on( "pagecreate", "#intro", function() {
             if( response.success) {
                 setTimeout(function() {
                     $.mobile.loading( 'hide');
+                    window.location.replace("#correcto");
                 }, 1000);
             } else {
-                alert("<h1>Se ha producido un error al cargar los datos, <br/> Intentelo de nuevo mas tarde!</h1>");
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                    window.location.replace("#error");
+                }, 1000);
             }
         }).fail(function(jqXHR, textStatus, errorThrown ) {
             alert(jqXHR.responseText);
