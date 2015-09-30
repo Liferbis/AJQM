@@ -372,7 +372,7 @@ require_once "include/classes.php";
 
 <!------------------>
 <!--INICIO ERROR-->
-<div data-role="page" data-theme="a" id="correcto">
+<div data-role="page" data-theme="a" id="error">
     <!-- -- MENU -- -->
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left"> 
         <div data-role="controlgroup" data-corners="false">
