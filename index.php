@@ -22,7 +22,8 @@ require_once "include/classes.php";
     <link rel="stylesheet" href="libreria/MyThemes/bac.css" />
     <link rel="stylesheet" href="libreria/MyThemes/jquery.mobile.icons.min.css" />
 <!-- -- FIN MIS TEMAS!!! -->
-    <link rel="stylesheet" href="libreria/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="libreria/jquery.mobile-1.4.5/dialogos.css"><link rel="stylesheet" href="libreria/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    
 
 <!-- DATEBOX !!! -->
     <link rel="stylesheet" href="libreria/datebox/jqm-datebox-1.4.5.min.css">
@@ -299,6 +300,11 @@ require_once "include/classes.php";
                 </div>
             </div>
         </form>
+
+        <div id="not">
+            <a href="#NoBajas" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="pop">Error</a>
+        </div>
+
         <div class="festivos">
             
         </div>
@@ -312,6 +318,29 @@ require_once "include/classes.php";
     </div>
 </div>
 <!--FIN INTRODUCIR-->
+<!------------------>
+
+
+<!------------------>
+<!--INICIO NoBajas-->
+<div data-role="page" class="ui-page ui-page-theme-a ui-dialog " data-dialog="true" data-external-page="true" tabindex="0" data-theme="a" style="min-height: 822px;" id="NoBajas">
+    
+    <div role="dialog" class="ui-dialog-contain ui-overlay-shadow ui-corner-all">
+
+        <div data-role="header" data-theme="b" role="banner" class="ui-header ui-bar-b">
+            <a href="#" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-left" data-rel="back">Close</a>
+            <h1 class="ui-title" role="heading" aria-level="1">ERROR</h1>
+        </div>
+
+        <div role="main" id="dialogo" class="ui-content">
+            <h1>ATENCION!!</h1>
+            <p>No se puede crear un informe <code>.pdf</code> Por una baja. </p>
+            <p>Solo se pueden introducir la información en la base de datos</p>
+            <a href="#intro" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-a">Aceptar</a>
+        </div>
+    </div>
+</div>
+<!--FIN NoBajas-->
 <!------------------>
 
 

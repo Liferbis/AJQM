@@ -109,7 +109,7 @@ class BD {
 		}else{
 			if($tipo=="vacaciones"){
 				$saldo= $saldo-$diasL;
-				$c="INSERT INTO `vacaciones`.`dias` (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', 'Si', '-', '-', '-', '-', '$comentario', '$sesion', '$hoy');";
+				$c="INSERT INTO dias (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', 'Si', '-', '-', '-', '-', '$comentario', '$sesion', '$hoy');";
 
 				$coment=$coment."****---****".$hoy.": Vacaciones->".$comentario;
 

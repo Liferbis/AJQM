@@ -1,0 +1,15 @@
+.ui-dialog-contain {
+	/*width: 92.5%;*/
+	max-width: 500px;
+	margin: 7% auto;
+	padding: 0;
+	position: relative;
+	/*top: -15px;*/
+	background: #CECECE;
+}
+.ui-btn .ui-shadow .ui-corner-all .ui-btn-a{
+	background-color: #f6f6f6;
+	border-color: #f00;
+	color: #333;
+	text-shadow: 0 1px 0 #f3f3f3;
+}

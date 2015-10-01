@@ -8,6 +8,27 @@ $( document ).on( "pagecreate", "#intro", function() {
             return $.post("include/ArchivoWord.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
  	          });
         }else{
+            if(tipe=="bec" || tipe=="bal"){
+                popupLoader("No se generan .pdf por bajas")
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                    window.location.replace("#error");
+                }, 3500);
+            }else{
+                popupLoader("Se ha producido un error al cargar los datos, Intentelo de nuevo mas tarde!")
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                    window.location.replace("#error");
+                }, 2500);
+            }
+        }
+    }
+
+    var set_aceptar = function(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL){
+        if(tipe=="vacaciones" || tipe=="PerRe" || tipe=="PerNoRe"){
+            return $.post("include/Introducir.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
+              });
+        }else{
             popupLoader("Se ha producido un error al cargar los datos, Intentelo de nuevo mas tarde!")
             setTimeout(function() {
                 $.mobile.loading( 'hide');
@@ -48,6 +69,46 @@ $( document ).on( "pagecreate", "#intro", function() {
 
     $("#FechaF").off('click').on('click', function(event) {
         $('#fecha_Fin a').click();
+    });
+
+// Boton aceptar!!
+    $("#intro").on("click", "[name='aceptar']", function(event) {
+        event.preventDefault();
+        popupLoader("Introduciendo datos")
+        var empleado = $("#empleado").val();
+        var fechaI = $("#FechaI").val();
+        var fechaF = $("#FechaF").val();
+        var tipe = $("#tipe").val(); 
+        var descrip = $("#descrip").val(); 
+        if($("[name='medio1']").attr("data-cacheval")=='false') {
+            var medio1=$("[name='medio1']").val();
+        } else {
+            var medio1 = 0;
+        }
+        if($("[name='medio2']").attr("data-cacheval")=='false') {
+            var medio2=$("[name='medio2']").val();
+        } else {
+            var medio2 = 0;
+        }
+        var dias = CalcularDiasLaborales(fechaI, fechaF)
+        var diasL= dias[0]-medio1-medio2;
+        var diasN= dias[1];
+        //alert("1: "+medio1+" 2: "+medio2)
+        set_aceptar(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL).done( function( response ) {
+            if( response.success) {
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                    window.location.replace("#correcto");
+                }, 1000);
+            } else {
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                    window.location.replace("#error");
+                }, 1000);
+            }
+        }).fail(function(jqXHR, textStatus, errorThrown ) {
+            alert(jqXHR.responseText);
+        });
     });
 
 // Boton aceptar y generar!!
